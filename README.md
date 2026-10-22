@@ -95,15 +95,16 @@ In Claude, open **Settings → Connectors → Add custom connector** and enter t
 
 1. Push this project to GitHub and create a Render **Web Service** with `backend` as Root Directory.
 2. Set Build Command to `npm install` and Start Command to `npm start`.
-3. Add `MONGODB_URI` and `FRONTEND_URL` environment variables. Set `FRONTEND_URL` to the final Netlify site URL exactly (for example, `https://example.netlify.app`). Render provides `PORT`; no hardcoded port is needed.
+3. Add `MONGODB_URI` and `FRONTEND_URL` environment variables. Set `FRONTEND_URL` to exactly the Netlify site URL with no trailing slash (for example, `https://example.netlify.app`). Render provides `PORT`; no hardcoded port is needed.
 4. Permit Render access in MongoDB Atlas Network Access (for a coursework demo, Atlas's `0.0.0.0/0` rule is commonly used; secure it appropriately for production).
 
 ## Deploy to Netlify
 
-1. Edit `frontend/src/api.js`: replace `http://localhost:5000/api` with `https://YOUR-RENDER-SERVICE.onrender.com/api`.
-2. Create a Netlify site with `frontend` as the base directory.
+1. Create a Netlify site with `frontend` as the base directory.
+2. Set the Netlify environment variable `VITE_API_URL` to `https://YOUR-RENDER-SERVICE.onrender.com/api` (replace this with your Render service URL).
 3. Use Build Command `npm run build` and Publish Directory `dist`.
-4. Redeploy Render after setting the Netlify URL in `FRONTEND_URL`.
+4. Redeploy the Netlify site after setting or changing `VITE_API_URL`; Vite reads this variable at build time.
+5. Set Render's `FRONTEND_URL` to exactly `https://smshubbit.netlify.app` (or your final Netlify URL), with no trailing slash, and redeploy the backend.
 
 ## Testing
 
