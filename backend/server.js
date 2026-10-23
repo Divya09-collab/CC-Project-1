@@ -6,10 +6,9 @@ const studentRoutes = require('./routes/studentRoutes');
 const mcpHandler = require('./mcp');
 
 if (!process.env.MONGODB_URI) { console.error('MONGODB_URI is required. Copy .env.example to .env and configure it.'); process.exit(1); }
-if (!process.env.FRONTEND_URL) { console.error('FRONTEND_URL is required for the CORS policy.'); process.exit(1); }
 connectDB();
 const app = express();
-const frontendOrigin = process.env.FRONTEND_URL?.replace(/\/$/, '');
+const frontendOrigin = process.env.FRONTEND_URL?.replace(/\/$/, '') || 'http://localhost:5173';
 const corsOptions = {
   origin: [frontendOrigin, 'http://localhost:5173'].filter(Boolean),
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
