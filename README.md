@@ -4,7 +4,7 @@ A MERN student directory with a React/Vite frontend, Express API, and MongoDB da
 
 ## Local installation
 
-The frontend uses `http://localhost:5000/api` by default. Leave `VITE_API_URL` blank in `frontend/.env` for local development; fill it with the deployed API URL only when you deploy. The backend uses `MONGODB_URI` from `backend/.env`; a hosted Atlas database works while running the app locally. `FRONTEND_URL` may be set to `http://localhost:5173` or left blank to use the local default.
+The frontend uses `http://localhost:5000/api` by default. Leave `VITE_API_URL` blank in `frontend/.env` for local development. The backend uses `MONGODB_URI` from `backend/.env`; a hosted Atlas database works while running the app locally. `FRONTEND_URL` may be set to `http://localhost:5173` or left blank to use the local default.
 
 Start the API in one terminal:
 
@@ -21,6 +21,15 @@ cd frontend
 npm install
 npm run dev
 ```
+
+## Deployed URLs
+
+- Frontend: https://cc-p1-frontend.netlify.app/
+- API: https://cc-project-1-1.onrender.com
+- Frontend `VITE_API_URL`: `https://cc-project-1-1.onrender.com/api`
+- Backend `FRONTEND_URL`: `https://cc-p1-frontend.netlify.app`
+
+Set `VITE_API_URL` in Netlify's environment variables and `FRONTEND_URL` in Render's environment variables. Redeploy both services after changing their environment settings.
 
 ## API endpoints
 
